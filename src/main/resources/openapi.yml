@@ -1,0 +1,84 @@
+openapi: 3.0.0
+
+info:
+  version: 0.0.1
+  title: Library Service
+  description: The library service
+
+servers:
+  - url: http://localhost:8080
+    description: This is where my api is hosted
+
+tags:
+  - name: "Book"
+  - name: "User"
+
+paths:
+
+  /book:
+    get:
+      summary: This is summary
+      description: |
+        This is a description
+      tags:
+        - "Book"
+      operationId: getAllBooksInLibrary
+      responses:
+        "200":
+          description: This means its ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        "400":
+          description: This means its bad request
+        "401":
+          description: This means its unauthorized
+
+    post:
+        summary: This is summary
+        description: |
+            This is a description
+        tags:
+            - "Book"
+        operationId: addBookToLibrary
+        requestBody:
+            description: This is the book object
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Book'
+        responses:
+            "200":
+              description: This means its ok
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Book'
+            "400":
+              description: This means its bad request
+            "401":
+              description: This means its unauthorized
+
+components:
+
+  schemas:
+
+    Book:
+      description: This is the book model
+      type: object
+      required:
+        - title
+      properties:
+        id:
+          description: The id of book
+          type: integer
+        title:
+          description: The name of book
+          type: string
+        author:
+          description: name of author
+          type: string
