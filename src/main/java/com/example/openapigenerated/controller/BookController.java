@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class BookController implements BookApi {
 
 
+  @Override
+  public ResponseEntity<Book> addBookToLibrary(Book body) {
+    System.out.println("addBookToLibrary: " + body);
+    return null;
+  }
 
   @Override
   public ResponseEntity<List<Book>> getAllBooksInLibrary() {
