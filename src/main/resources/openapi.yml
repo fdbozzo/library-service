@@ -15,6 +15,33 @@ tags:
 
 paths:
 
+  /book/{bookId}:
+    parameters:
+      - name: bookId
+        in: path
+        description: The id of book
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: This is summary
+      description: |
+          This is a description
+      tags:
+          - "Book"
+      operationId: getBookById
+      responses:
+        "200":
+          description: This means its ok
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Book'
+        "400":
+          description: This means its bad request
+        "401":
+          description: This means its unauthorized
+
   /book:
     get:
       summary: This is summary

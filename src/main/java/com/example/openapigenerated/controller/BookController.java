@@ -25,4 +25,10 @@ public class BookController implements BookApi {
     return new ResponseEntity<>(books, HttpStatus.OK);
   }
 
+  @Override
+  public ResponseEntity<Book> getBookById(Integer bookId) {
+    Book book = new Book().id(1).title("The Lord of the Rings").author("J. R. R. Tolkien");
+    return new ResponseEntity<>(book, HttpStatus.OK);
+  }
+
 }
